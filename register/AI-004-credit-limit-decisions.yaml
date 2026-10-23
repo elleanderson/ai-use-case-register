@@ -1,0 +1,16 @@
+id: AI-004
+name: Store Card Credit Limits
+owner: Chief Risk Officer
+purpose: Sets the starting credit limit for new store card customers from their application and credit file.
+status: live
+users: [customers]
+decision_role: decides
+domain: credit
+practices: []
+model: {source: in-house, name: Gradient boosted credit model}
+data: {personal_data: true, special_category: false, dpia_done: true}
+human_oversight: {level: flagged-only, reviewer: Credit underwriting team}
+evals: {in_place: true, pass_rate_target: 0.95, last_pass_rate: 0.91, last_run: 2026-10-01}
+transparency: {people_told: true}
+risks: [Unfair outcomes for thin credit files, Model drift as interest rates change]
+review: {last_reviewed: 2026-07-01, next_review: 2027-01-01}

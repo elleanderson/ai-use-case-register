@@ -1,0 +1,16 @@
+id: AI-002
+name: CV Shortlisting Assistant
+owner: Head of Talent
+purpose: Ranks applications for store manager roles against the job description, so recruiters can read the strongest first.
+status: pilot
+users: [job-applicants, staff]
+decision_role: recommends
+domain: employment
+practices: []
+model: {source: vendor-api, name: Large language model via vendor API}
+data: {personal_data: true, special_category: false, dpia_done: false, leaves_the_organisation: true}
+human_oversight: {level: every-output, reviewer: Recruiters}
+evals: {in_place: false}
+transparency: {people_told: false}
+risks: [Reproduces bias against career gaps, Applicants unaware AI is involved]
+review: {last_reviewed: 2026-08-15, next_review: 2026-11-15}

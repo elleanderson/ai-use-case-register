@@ -1,0 +1,16 @@
+id: AI-005
+name: Meeting Summaries
+owner: Chief Operating Officer
+purpose: Summarises internal meetings and lists actions, for staff who couldn't attend.
+status: live
+users: [staff]
+decision_role: assists
+domain: general
+practices: []
+model: {source: vendor-api, name: Productivity suite assistant}
+data: {personal_data: true, special_category: false, dpia_done: true, leaves_the_organisation: true}
+human_oversight: {level: none}
+evals: {in_place: false}
+transparency: {people_told: true}
+risks: [Confidential discussions summarised into the wrong channel]
+review: {last_reviewed: 2026-03-01, next_review: 2026-09-01}

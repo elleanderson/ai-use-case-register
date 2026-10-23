@@ -1,0 +1,16 @@
+id: AI-007
+name: Product Description Writer
+owner: Head of Ecommerce
+purpose: Drafts product descriptions from supplier data, which copywriters edit before publishing.
+status: live
+users: [staff, public]
+decision_role: assists
+domain: general
+practices: []
+model: {source: open-weight, name: Open-weight model hosted in-house}
+data: {personal_data: false}
+human_oversight: {level: every-output, reviewer: Copywriters}
+evals: {in_place: true, pass_rate_target: 0.8, last_pass_rate: 0.86, last_run: 2026-10-20}
+transparency: {people_told: true}
+risks: [Invented product claims]
+review: {last_reviewed: 2026-10-01, next_review: 2027-04-01}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/elleanderson/ai-use-case-register/schema/use-case.schema.json",
+  "title": "AI Use Case",
+  "description": "One AI use case in an organisation's register. Written so a product owner can fill it in without a lawyer, and a lawyer can review it without a product owner.",
+  "type": "object",
+  "required": ["id", "name", "owner", "purpose", "status", "users", "decision_role", "model", "data", "human_oversight", "evals", "transparency", "review"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^AI-[0-9]{3}$", "description": "Stable identifier, such as AI-001" },
+    "name": { "type": "string", "minLength": 3 },
+    "owner": { "type": "string", "description": "The accountable person or role, not a team" },
+    "purpose": { "type": "string", "minLength": 20, "description": "What it does and why, in plain English" },
+    "status": { "enum": ["idea", "discovery", "pilot", "live", "retired"] },
+    "users": { "type": "array", "items": { "enum": ["staff", "customers", "public", "children", "job-applicants", "patients"] }, "minItems": 1 },
+    "decision_role": {
+      "enum": ["assists", "recommends", "decides"],
+      "description": "assists: drafts or summarises for a person; recommends: suggests an outcome a person approves; decides: acts without a person approving each case"
+    },
+    "domain": {
+      "enum": ["general", "biometrics", "critical-infrastructure", "education", "employment", "essential-services", "credit", "insurance", "law-enforcement", "migration", "justice", "democratic-processes", "safety-component"],
+      "default": "general",
+      "description": "The area of life it touches. Several map to EU AI Act Annex III."
+    },
+    "practices": {
+      "type": "array",
+      "description": "Flags for practices the EU AI Act restricts or bans outright",
+      "items": { "enum": ["subliminal-manipulation", "exploits-vulnerabilities", "social-scoring", "emotion-recognition-at-work-or-school", "biometric-categorisation-sensitive", "untargeted-face-scraping", "predictive-policing-profiling", "realtime-remote-biometric-id", "chatbot", "generates-synthetic-media", "deepfakes", "emotion-recognition"] },
+      "default": []
+    },
+    "model": {
+      "type": "object",
+      "required": ["source", "name"],
+      "properties": {
+        "source": { "enum": ["vendor-api", "open-weight", "in-house", "embedded-in-product"] },
+        "name": { "type": "string" },
+        "routing": { "type": "boolean", "default": false }
+      }
+    },
+    "data": {
+      "type": "object",
+      "required": ["personal_data"],
+      "properties": {
+        "personal_data": { "type": "boolean" },
+        "special_category": { "type": "boolean", "default": false, "description": "Health, ethnicity, religion, sexuality, biometrics and similar" },
+        "dpia_done": { "type": "boolean", "default": false },
+        "leaves_the_organisation": { "type": "boolean", "default": false }
+      }
+    },
+    "human_oversight": {
+      "type": "object",
+      "required": ["level"],
+      "properties": {
+        "level": { "enum": ["every-output", "sample", "flagged-only", "none"] },
+        "reviewer": { "type": "string" }
+      }
+    },
+    "evals": {
+      "type": "object",
+      "required": ["in_place"],
+      "properties": {
+        "in_place": { "type": "boolean" },
+        "pass_rate_target": { "type": "number", "minimum": 0, "maximum": 1 },
+        "last_pass_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "last_run": { "type": "string", "format": "date" }
+      }
+    },
+    "transparency": {
+      "type": "object",
+      "required": ["people_told"],
+      "properties": {
+        "people_told": { "type": "boolean", "description": "Do the people affected know AI is involved?" },
+        "content_marked": { "type": "boolean", "default": false }
+      }
+    },
+    "risks": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "review": {
+      "type": "object",
+      "required": ["last_reviewed", "next_review"],
+      "properties": {
+        "last_reviewed": { "type": "string", "format": "date" },
+        "next_review": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

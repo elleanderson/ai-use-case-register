@@ -1,0 +1,16 @@
+id: AI-001
+name: Customer Help Assistant
+owner: Head of Customer Service
+purpose: Answers customer questions about orders, returns and delivery on the website, and hands over to a person for anything it can't resolve.
+status: live
+users: [customers]
+decision_role: assists
+domain: general
+practices: [chatbot]
+model: {source: vendor-api, name: Large language model via vendor API, routing: true}
+data: {personal_data: true, special_category: false, dpia_done: true, leaves_the_organisation: true}
+human_oversight: {level: flagged-only, reviewer: Customer service team leads}
+evals: {in_place: true, pass_rate_target: 0.85, last_pass_rate: 0.88, last_run: 2026-10-14}
+transparency: {people_told: true, content_marked: false}
+risks: [Gives wrong refund information, Leaks another customer's order details]
+review: {last_reviewed: 2026-09-01, next_review: 2026-12-01}

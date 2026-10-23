@@ -1,0 +1,16 @@
+id: AI-003
+name: Campaign Image Generator
+owner: Marketing Director
+purpose: Creates lifestyle images for seasonal campaigns on social media and in email.
+status: live
+users: [public]
+decision_role: assists
+domain: general
+practices: [generates-synthetic-media]
+model: {source: vendor-api, name: Image generation model via vendor API}
+data: {personal_data: false}
+human_oversight: {level: every-output, reviewer: Brand team}
+evals: {in_place: false}
+transparency: {people_told: false, content_marked: false}
+risks: [Images that look like real customers, Brand inconsistency]
+review: {last_reviewed: 2026-06-10, next_review: 2026-09-10}

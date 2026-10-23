@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aireg"
+version = "1.0.0"
+description = "A register, JSON Schema and indicative EU AI Act triage for every AI use case in an organisation."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Elle Anderson" }]
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0", "jsonschema>=4.20"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+aireg = "aireg.cli:main"
+
+[project.urls]
+Homepage = "https://andersonco.uk"
+Source = "https://github.com/elleanderson/ai-use-case-register"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

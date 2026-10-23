@@ -1,0 +1,16 @@
+id: AI-006
+name: Staff Wellbeing Camera
+owner: Head of People
+purpose: Proposed idea to read store staff facial expressions on shift to spot stress and burnout early.
+status: idea
+users: [staff]
+decision_role: recommends
+domain: employment
+practices: [emotion-recognition-at-work-or-school]
+model: {source: vendor-api, name: Emotion recognition service}
+data: {personal_data: true, special_category: true, dpia_done: false}
+human_oversight: {level: every-output, reviewer: Store managers}
+evals: {in_place: false}
+transparency: {people_told: false}
+risks: [Unlawful under the EU AI Act, Destroys trust with staff]
+review: {last_reviewed: 2026-10-05, next_review: 2026-11-05}
